@@ -1,12 +1,12 @@
-const iconToggle=document.querySelector('.toggle_icon');
-const navbarMenu=document.querySelector('.menu');
-const menuLinks=document.querySelectorAll('.menu-link');
-const iconClose=document.querySelector('.close_icon');
+const iconToggle = document.querySelector('.toggle_icon');
+const navbarMenu = document.querySelector('.menu');
+const menuLinks = document.querySelectorAll('.menu-link');
+const iconClose = document.querySelector('.close_icon');
 
 iconToggle.addEventListener('click', () => {
     navbarMenu.classList.toggle('active');
 });
- 
+
 iconClose.addEventListener('click', () => {
     navbarMenu.classList.remove('active');
 });
@@ -14,65 +14,64 @@ iconClose.addEventListener('click', () => {
 menuLinks.forEach((menuLink) => {
     menuLink.addEventListener('click', () => {
         navbarMenu.classList.remove('active');
-    })
-})
+    });
+});
 
-//Change Bacground Header
+// Change Background Header
 function scrollHeader() {
-    const header=document.getElementById('header');
-    this.scrollY >=20 ? header.classList.add('active') : header.classList.remove('active');
-};
+    const header = document.getElementById('header');
+    this.scrollY >= 20 ? header.classList.add('active') : header.classList.remove('active');
+}
 
-window.addEventListener('scroll',scrollHeader);
+window.addEventListener('scroll', scrollHeader);
 
 /* Hero Type Effect */
 document.addEventListener('DOMContentLoaded', function () {
     const typed = document.querySelector('.typed');
   
     if (typed) {
-      let typed_strings = typed.getAttribute('data-typed-items');
-      typed_strings = typed_strings.split(',');
-      new Typed('.typed', {
-        strings: typed_strings,
-        loop: true,
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 2000
-      });
+        let typed_strings = typed.getAttribute('data-typed-items');
+        typed_strings = typed_strings.split(',');
+        new Typed('.typed', {
+            strings: typed_strings,
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 2000
+        });
     }
-  });
+});
 
-  //Scroll section active link
-  const sections = document.querySelectorAll('section[id]');
+// Scroll section active link
+const sections = document.querySelectorAll('section[id]');
 
-  function scrollActive() {
-      const scrollY = window.pageYOffset;
+function scrollActive() {
+    const scrollY = window.pageYOffset;
   
-      sections.forEach(section => {
-          const sectionHeight = section.offsetHeight;
-          const sectionTop = section.offsetTop - 100;
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
   
-          let sectionId = section.getAttribute('id');
+        let sectionId = section.getAttribute('id');
   
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-              const link = document.querySelector('.menu a[href*=' + sectionId + ']');
-              if (link) {
-                  link.classList.add('active-link');
-              }
-          } else {
-              const link = document.querySelector('.menu a[href*=' + sectionId + ']');
-              if (link) {
-                  link.classList.remove('active-link');
-              }
-          }
-      });
-  }
-  
-  window.addEventListener('scroll', scrollActive);
-  
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            const link = document.querySelector('.menu a[href*=' + sectionId + ']');
+            if (link) {
+                link.classList.add('active-link');
+            }
+        } else {
+            const link = document.querySelector('.menu a[href*=' + sectionId + ']');
+            if (link) {
+                link.classList.remove('active-link');
+            }
+        }
+    });
+}
 
-  //Resume Scroll
-  const pages = document.querySelectorAll('.page');
+window.addEventListener('scroll', scrollActive);
+
+// Resume Scroll
+const pages = document.querySelectorAll('.page');
 const resumeTabs = document.querySelector('.resume-tabs');
 
 function resumeActive() {
@@ -100,27 +99,25 @@ function resumeActive() {
 
 window.addEventListener('scroll', resumeActive);
 
-//Services section
+// Services section
+let modalBtns = document.querySelectorAll('.services-button');
+let modalViews = document.querySelectorAll('.services-modal');
+let modalClose = document.querySelectorAll('.modal-close-icon');
 
-let modalBtns=document.querySelectorAll('.services-button'),
-    modalViews=document.querySelectorAll('.services-modal'),
-    modalClose=document.querySelectorAll('.modal-close-icon');
-
-let modal=function(modalClick){
+let modal = function(modalClick) {
     modalViews[modalClick].classList.add('active-modal');
 }
 
-modalBtns.forEach((modalBtn,i)=>{
-    modalBtn.addEventListener('click',()=>{
-        modal(i)
-    })
-})
+modalBtns.forEach((modalBtn, i) => {
+    modalBtn.addEventListener('click', () => {
+        modal(i);
+    });
+});
 
-modalClose.forEach(el=>{
-    el.addEventListener('click',()=>{
-        modalViews.forEach(modalView=>{
+modalClose.forEach(el => {
+    el.addEventListener('click', () => {
+        modalViews.forEach(modalView => {
             modalView.classList.remove('active-modal');
-        })
-    })
-})
-
+        });
+    });
+});
